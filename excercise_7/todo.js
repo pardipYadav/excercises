@@ -102,8 +102,9 @@ function actionPerform(val, action) {
       return;
     }
     valueOf[found] = editpromptBox;
-    localStorage.setItem("task", valueOf.join(","));
 
+    localStorage.setItem("task", valueOf.join(","));
+    row.Cells[1] = editpromptBox;
     // addTableRow(editpromptBox);
   } else if (action === "delete") {
     let row = val.closest("tr");
@@ -120,10 +121,9 @@ function actionPerform(val, action) {
       alert("Value not found.");
       return;
     }
-    let values = data.splice(compareData, 1);
-    console.log(values);
-    localStorage.setItem("task", values.join(","));
-    console.log("Updated localStorage:", values.join(","));
+    data.splice(compareData, 1);
+    localStorage.setItem("task", data.join(","));
+    console.log("Updated localStorage:", data.join(","));
   }
 }
 
